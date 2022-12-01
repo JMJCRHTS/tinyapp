@@ -25,13 +25,13 @@
           </tr>
         </thead>
         <tbody>
-          <% for (let id in urls) { %>
+          <% for(let id in urls) { %>
             <tr>
               <td>
                 <%= id %>
               </td>
               <td>
-                <%= urls[id] %>
+                <%= urls[id].longURL %>
               </td>
               <td>
                 <a class="btn btn-outline-primary" href="/urls/<%= id %>"> Edit </a>
