@@ -9,22 +9,23 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
 
-  <title>Register - Tiny App</title>
+  <title>Login - Tiny App</title>
 </head>
 
 <body>
   <%- include('./partials/_header') %>
     <main class="mt-5">
       <div class="card text-center align-middle mx-auto bg-dark" style="width: 24rem">
-        <div class="card-header text-white bg-success">Register</div>
+        <div class="card-header text-white bg-success font-weight-light"> Welcome Back!</div>
         <div class="card-body">
-          <form action="/register" method="POST">
+          <h5 class="card-title text-light">Log into your account: </h5>
+          <form action="/login" method="POST">
             <div class="form-group">
               <label for="email" class="text-light small">Email address: </label>
               <input class="form-control bg-secondary text-light" type="email" id="email" name="email">
             </div>
             <div class="form-group">
-              <label for="password" class="text-light small">New Password: </label>
+              <label for="password" class="text-light small">Password: </label>
               <input class="form-control bg-secondary text-light" type="password" id="password" name="password">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>

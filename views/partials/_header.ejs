@@ -1,6 +1,6 @@
 <header>
   <nav class="navbar navbar-expand-md navbar-dark bg-success">
-    <a class="navbar-brand" href="/urls">TinyApp</a>
+    <a class="navbar-brand" href="/">TinyApp</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
       aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -11,16 +11,19 @@
         <a class="nav-item nav-link" href="/urls/new">Create New URL</a>
       </div>
     </div>
-    <div>
-      <% if (current_user) {%>
-        <form method="POST" action="/logout">
-          <span style="width: 2000px;">Logged in As: <%= current_user %>!</span>
-          <button type="submit" class="btn btn-outline-secondary">Logout</button>
+    <% if (typeof user !=='undefined' ) { %>
+      <span class="navbar-text">Welcome, <%= user.email; %>&nbsp;&nbsp;</span>
+      <form action="/logout" method="POST">
+        <button type="submit" class="btn btn-danger">Logout</button>
+      </form>
+      <% } else { %>
+        <form action="/login" method="GET">
+          <button type="submit" class="btn btn-primary mr-3">Login</button>
         </form>
-        <% } else { %>
-          <a href="/login" class="btn btn-success" role="button" aria-disabled="true">Login</a>
-          <a href="/register" class="btn btn-success" role="button" aria-disabled="true">Register</a>
-          <% } %>
-    </div>
+        <form action="/register" method="GET">
+          <button type="submit" class="btn btn-dark">Register</button>
+        </form>
+        <% } %>
+
   </nav>
 </header>
