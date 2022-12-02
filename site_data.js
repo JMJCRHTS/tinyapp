@@ -1,24 +1,24 @@
 const urlDatabase = {
   b6UTxQ: {
     longURL: "https://www.tsn.ca",
-    userID: "UID53xyab",
+    userID: "aJ48lW",
   },
   i3BoGr: {
     longURL: "https://www.google.ca",
-    userID: "UID67xy12",
+    userID: "aJ48lW",
   },
 };
 
 const users = {
-  UID67xy12: {
-    id: "UID67xy12",
+  aJ48lW: {
+    id: "aJ48lW",
     email: "user@example.com",
-    password: "purple-monkey-dinosaur",
+    hashedPassword: "$2a$10$9pW1yjVO7.UurPkcpZhS1.0oAiujqJLOVgD8Db6rikawweqDLuYiG" // "purple-monkey-dinosaur",
   },
-  UID53xyab: {
-    id: "UID53xyab",
+  x23yab: {
+    id: "x23yab",
     email: "user2@example.com",
-    password: "dishwasher-funk",
+    hashedPassword: "$2a$10$YAOnYrQGWQ.8IDkJh.iVpuWyLESfhjWump0H6rae2dHGyFcND9.ZC" // "dishwasher-funk",
   },
 };
 

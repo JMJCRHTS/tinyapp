@@ -2,6 +2,7 @@
 const express = require("express");
 const app = express();
 const cookie = require('cookie-parser');
+const bcrypt = require('bcryptjs');
 const {urlDatabase, users} = require('./site_data');
 const {generateRandomString, findUserEmail, urlsForUser, canEditDelete} = require('./helper_functions');
 
@@ -75,7 +76,9 @@ app.post("/register", (req, res) => {
   if (req.body.email && req.body.password) {
     if (!findUserEmail(req.body.email, users)) {
       const randomID = `UID${generateRandomString()}`;
-      users[randomID] = {id : randomID, email : req.body.email, password : req.body.password};
+      const hashPassword = bcrypt.hashSync(req.body.password, 10);
+      users[randomID] = {id : randomID, email : req.body.email, hashPassword};
+      console.log(users);
       res
         .cookie('user_id', randomID)
         .redirect(302, '/urls');
@@ -107,7 +110,7 @@ app.post("/login", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
   const user = findUserEmail(email, users);
-  if (user && user.password === password) {
+  if (user && bcrypt.compareSync(password, user.hashPassword)) {
     res
       .cookie('user_id', user.id)
       .redirect(302, '/urls');
