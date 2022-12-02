@@ -34,7 +34,7 @@ const urlsForUser = function(id, urlDatabase) {
 
 const canEditDelete = function(req, users, urlDatabase) {
   const id = req.params.id;
-  const user = users[req.cookies.user_id];
+  const user = users[req.session.user_id];
 
   if (!user || !urlDatabase[id]) {
     return false;
