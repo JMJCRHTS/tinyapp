@@ -4,7 +4,7 @@ const app = express();
 const cookie = require("cookie-session");
 const bcrypt = require("bcryptjs");
 const {urlDatabase, users} = require("./site_data");
-const {generateRandomString, findUserEmail, urlsForUser, canEditDelete} = require("./helper_functions");
+const {generateRandomString, getUserByEmail, urlsForUser, canEditDelete} = require("./helpers");
 
 //view engine
 app.set("view engine", "ejs");
@@ -30,11 +30,6 @@ app.get("/", (req, res) => {
 });
 
 
-// app.get("/urls.json", (req, res) => {
-//   res.json(urlDatabase);
-// });
-
-
 app.get("/urls", (req, res) => {
   const user = users[req.session.user_id];
   if (user) {
@@ -42,10 +37,7 @@ app.get("/urls", (req, res) => {
     const templateVars = {urls : userUrls, user};
     res.render("urls_index", templateVars);
   } else {
-    const templateVars = {error: "401", message: "Must be logged in to view this page"};
-    res
-      .status(401)
-      .render("urls_errors", templateVars);
+    res.redirect(302, '/login');
   }
 });
 
@@ -77,10 +69,11 @@ app.get("/register", (req, res) => {
 
 app.post("/register", (req, res) => {
   if (req.body.email && req.body.password) {
-    if (!findUserEmail(req.body.email, users)) {
+    if (!getUserByEmail(req.body.email, users)) {
       const randomID = `UIDN${generateRandomString()}`;
       const hashedPassword = bcrypt.hashSync(req.body.password, 10);
       users[randomID] = {id : randomID, email : req.body.email, hashedPassword};
+      // eslint-disable-next-line camelcase
       req.session.user_id = randomID;
       res.redirect(302, "/urls");
     } else {
@@ -108,7 +101,7 @@ app.get("/login", (req, res) => {
 app.post("/login", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
-  const user = findUserEmail(email, users);
+  const user = getUserByEmail(email, users);
   if (user && bcrypt.compareSync(password, user.hashedPassword)) {
     res
       .cookie("user_id", user.id)

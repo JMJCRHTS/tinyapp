@@ -11,7 +11,7 @@ const generateRandomString = function() {
   return string;
 };
 
-const findUserEmail = function(email, data) {
+const getUserByEmail = function(email, data) {
   for (let obj in data) {
     let user = data[obj];
     if (email === user.email) {
@@ -46,4 +46,4 @@ const canEditDelete = function(req, users, urlDatabase) {
   return true;
 };
 
-module.exports = {generateRandomString, findUserEmail, urlsForUser, canEditDelete};
+module.exports = {generateRandomString, getUserByEmail, urlsForUser, canEditDelete};
