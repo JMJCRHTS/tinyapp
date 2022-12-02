@@ -1,7 +1,7 @@
 // dependencies
 const express = require("express");
 const app = express();
-const cookie = require('cookie-parser');
+const cookie = require('cookie-session');
 const bcrypt = require('bcryptjs');
 const {urlDatabase, users} = require('./site_data');
 const {generateRandomString, findUserEmail, urlsForUser, canEditDelete} = require('./helper_functions');
@@ -14,7 +14,10 @@ const PORT = 8080;
 
 // middleware
 app.use(express.urlencoded({ extended: true }));
-app.use(cookie());
+app.use(cookie({
+  name: 'session',
+  keys: 
+}));
 
 // routes
 app.get("/", (req, res) => {
