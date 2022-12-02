@@ -73,7 +73,6 @@ app.post("/register", (req, res) => {
       const randomID = `UIDN${generateRandomString()}`;
       const hashedPassword = bcrypt.hashSync(req.body.password, 10);
       users[randomID] = {id : randomID, email : req.body.email, hashedPassword};
-      // eslint-disable-next-line camelcase
       req.session.user_id = randomID;
       res.redirect(302, "/urls");
     } else {
