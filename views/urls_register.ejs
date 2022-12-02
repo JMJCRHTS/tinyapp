@@ -11,12 +11,14 @@
 
   <title>Register - Tiny App</title>
 </head>
+
 <body>
   <%- include('./partials/_header') %>
     <main class="mt-5">
       <div class="card text-center align-middle mx-auto bg-dark" style="width: 24rem">
-        <div class="card-header text-white bg-success">Register</div>
+        <div class="card-header text-white bg-success font-weight-light"> Welcome</div>
         <div class="card-body">
+          <h5 class="card-title text-light">Sign up for an account! </h5>
           <form action="/register" method="POST">
             <div class="form-group">
               <label for="email" class="text-light small">Email address: </label>

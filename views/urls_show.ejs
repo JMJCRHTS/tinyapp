@@ -11,6 +11,7 @@
 
   <title>Show URL - Tiny App</title>
 </head>
+
 <body>
   <%- include('./partials/_header') %>
     <div class="card text-center">
@@ -29,7 +30,7 @@
         <form action="/urls/<%= id %>" method="POST" name="newurl">
           <label for="newurl">New Url: </label>
           <input id="newurl" type="text" name="newUrl" placeholder="New Url Here...">
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-outline-primary">Submit</button>
         </form>
       </div>
     </div>
