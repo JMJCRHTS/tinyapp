@@ -65,7 +65,7 @@ app.post("/urls", (req, res) => {
 
 app.get("/register", (req, res) => {
   if (!req.cookies["user_id"]) {
-    res.render("urls_registration");
+    res.render("urls_register");
   } else {
     res.redirect(302, "/urls");
   }

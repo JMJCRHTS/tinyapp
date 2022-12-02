@@ -20,6 +20,11 @@ const users = {
     email: "user2@example.com",
     hashedPassword: "$2a$10$YAOnYrQGWQ.8IDkJh.iVpuWyLESfhjWump0H6rae2dHGyFcND9.ZC" // "dishwasher-funk",
   },
+  UIDl02nx2: {
+    id: 'UIDl02nx2',
+    email: 'noor@example.com',
+    hashPassword: '$2a$10$FuJvipnOWgl2mOHNFbCZWuojdARN4OjmcR6Yne5tRuNA8HIq95CsW' // 'noor1997'
+  }
 };
 
 module.exports = {urlDatabase, users};
